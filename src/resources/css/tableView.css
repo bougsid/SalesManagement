@@ -1,0 +1,49 @@
+/* Default row background is black */
+/*.table-row-cell {*/
+    /*-fx-background-color: black;*/
+/*}*/
+
+/* Text in the rows will be white */
+/*.table-row-cell .text {*/
+    /*-fx-fill: white ;*/
+/*}*/
+
+/*
+Pseudo class 'up' will change the row background
+ color to green when activated
+ */
+.table-row-cell:paye
+{
+    -fx-background-color: #00be3f;
+}
+
+/*
+Pseudo class 'down' will change the row background
+color to red when activated
+*/
+.table-row-cell:nonpaye {
+    -fx-background-color: #ff6700;
+}
+.table-row-cell:impaye {
+    -fx-background-color: #c60000;
+}
+
+.combo-box  .list-cell
+{
+//-fx-background-color: burlywood;
+   // -fx-padding: 3 0 2 7;
+   // -fx-cell-size: 2.66667em;
+   // -fx-font: 13px "Arial";
+}
+.combo-box .cell:odd {
+    -fx-background-color: white;
+}
+.combo-box .cell:even {
+    -fx-background-color: #f2f2f2;
+}
+.combo-box .cell:hover {
+    -fx-background-color: #d1ced1;
+}
+.combo-box .cell:selected {
+    -fx-background-color: #d1ced1;
+}

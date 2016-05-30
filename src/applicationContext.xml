@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <bean id="applicationContextProvider" class="util.ApplicationContextProvider" />
+
+    <context:property-placeholder location="jdbc.properties" />
+    <context:annotation-config/>
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+    </bean>
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation" value="classpath:hibernate.cfg.xml" />
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.enable_lazy_load_no_trans">true</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop>
+            </props>
+        </property>
+
+    </bean>
+
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="rollbackOnCommitFailure" value="true"/>
+    </bean>
+
+    <tx:annotation-driven proxy-target-class="true"
+                          transaction-manager="transactionManager" />
+
+    <bean id="hibernateUtil" class="dao.HibernateUtil">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <bean id="menuController" class="view.screensframework.MenuController">
+
+        <property name="orderMetier" ref="orderMetier"/>
+    </bean>
+    <bean id="addCustomerController" class="app.customer.AddCustomerController">
+        <property name="metier" ref="customerMetier"/>
+    </bean>
+    <bean id="customerDao" class="app.customer.CustomerDAO"/>
+     
+    <bean id="customerMetier" class="app.customer.CustomerMetier" >
+        <property name="customerDAO" ref="customerDao"/>
+        <property name="regionMetier" ref="regionMetier"/>
+        <property name="orderMetier" ref="orderMetier"/>
+        <property name="checkMetier" ref="checkMetier"/>
+    </bean>
+    <bean id="customerPaymentController" class="app.check.customerPaymentController">
+
+    </bean>
+    <bean id="customerController" class="app.customer.CustomerController">
+        <property name="metier" ref="customerMetier"/>
+    </bean>
+
+    <bean id="regionDao" class="app.region.RegionDAO"/>
+
+    <bean id="regionMetier" class="app.region.RegionMetier" >
+        <property name="regionDAO" ref="regionDao"/>
+    </bean>
+    <bean id="regionController" class="app.region.RegionController">
+        <property name="metier" ref="regionMetier"/>
+    </bean>
+
+    <bean id="order" class="app.order.Order" scope="prototype"/>
+    <bean id="orderline" class="app.orderline.Orderline" scope="prototype"/>
+
+    <bean id="orderDAO" class="app.order.OrderDAO"/>
+     
+    <bean id="orderMetier" class="app.order.OrderMetier">
+        
+        <property name="orderDAO" ref="orderDAO"/>
+        <property name="orderlineMetier" ref="orderlineMetier"/>
+        <property name="customerMetier" ref="customerMetier"/>   
+        <property name="userMetier" ref="userMetier"/>   
+        <property name="billMetier" ref="billMetier"/>   
+        <property name="paymentMetier" ref="paymentMetier"/>
+        <property name="checkMetier" ref="checkMetier"/>
+    </bean>
+    <bean id="orderController" class="app.order.OrderController">
+        <property name="metier" ref="orderMetier"/>
+    </bean>
+
+    <bean id="orderlineDAO" class="app.orderline.OrderlineDAO"/>        
+     
+    <bean id="orderlineMetier" class="app.orderline.OrderlineMetier">
+        <property name="orderlineDAO" ref="orderlineDAO"/>
+        <property name="itemMetier" ref="itemMetier"/>
+        <property name="paymentMetier" ref="paymentMetier"/>
+        <property name="bankMetier" ref="bankMetier"/>
+        <property name="orderMetier" ref="orderMetier"/>
+    </bean>
+    <bean id="orderlineController" class="app.orderline.OrderlineController">
+        <property name="metier" ref="orderlineMetier"/>
+    </bean>
+
+    <bean id="categoryDao" class="app.category.CategoryDAO"/>
+
+    <bean id="categoryMetier" class="app.category.CategoryMetier">
+        <property name="categoryDAO" ref="categoryDao"/>
+    </bean>
+    <bean id="categoryController" class="app.category.CategoryController">
+        <property name="metier" ref="categoryMetier"/>
+    </bean>
+
+    <bean id="item" class="app.item.Item" scope="prototype">
+
+    </bean>
+    <bean id="itemDao" class="app.item.ItemDAO"/>
+     
+    <bean id="itemMetier" class="app.item.ItemMetier">
+        <property name="itemDAO" ref="itemDao"/>
+        <property name="categoryMetier" ref="categoryMetier"/>
+        <property name="supplierMetier" ref="supplierMetier"/>
+
+    </bean>
+    <bean id="itemController" class="app.item.ItemController">
+        <property name="metier" ref="itemMetier"/>
+    </bean>
+    <bean id="addItemController" class="app.item.AddItemController">
+        <property name="metier" ref="itemMetier"/>
+    </bean>
+    <bean id="supplierDao" class="app.supplier.SupplierDAO"/>
+     
+    <bean id="supplierMetier" class="app.supplier.SupplierMetier">
+        <property name="supplierDAO" ref="supplierDao"/>
+    </bean>
+    <bean id="supplierController" class="app.supplier.SupplierController">
+        <property name="metier" ref="supplierMetier"/>
+    </bean>
+
+    <bean id="userDao" class="app.user.UserDAO"/>        
+     
+    <bean id="userMetier" class="app.user.UserMetier">
+        <property name="userDAO" ref="userDao"/>
+    </bean>
+    <bean id="userController" class="app.user.UserController">
+        <property name="metier" ref="userMetier"/>
+    </bean>
+    <bean id="paymentDao" class="app.payment.PaymentDAO"/>        
+     
+    <bean id="paymentMetier" class="app.payment.PaymentMetier">
+        <property name="paymentDAO" ref="paymentDao"/>
+    </bean>
+    <bean id="paymentController" class="app.payment.PaymentController">
+        <property name="metier" ref="paymentMetier"/>
+    </bean>
+    
+    <bean id="bill" class="app.bill.Bill" scope="prototype" />
+    <bean id="billDao" class="app.bill.BillDAO"/>        
+     
+    <bean id="billMetier" class="app.bill.BillMetier">
+        <property name="billDAO" ref="billDao"/>
+    </bean>
+    <bean id="billController" class="app.bill.BillController">
+        <property name="metier" ref="billMetier"/>
+    </bean>
+    
+    <bean id="cash" class="app.cash.Cash" scope="prototype" />        
+    <bean id="cashDao" class="app.cash.CashDAO"/>        
+     
+    <bean id="cashMetier" class="app.cash.CashMetier">
+        <property name="cashDAO" ref="cashDao"/>
+    </bean>
+    <bean id="cashController" class="app.cash.CashController">
+        <property name="metier" ref="cashMetier"/>
+    </bean>
+    
+    <bean id="check" class="app.check.Check" scope="prototype" />        
+    <bean id="checkDao" class="app.check.CheckDAO"/>        
+     
+    <bean id="checkMetier" class="app.check.CheckMetier">
+        <property name="checkDAO" ref="checkDao"/>
+        <property name="orderMetier" ref="orderMetier"/>
+    </bean>
+    <bean id="checkController" class="app.check.CheckController">
+        <property name="metier" ref="checkMetier"/>
+    </bean>
+    
+    <bean id="bank" class="app.bank.Bank"/>        
+    <bean id="bankDao" class="app.bank.BankDAO"/>        
+     
+    <bean id="bankMetier" class="app.bank.BankMetier">
+        <property name="bankDAO" ref="bankDao"/>
+    </bean>
+    <bean id="bankController" class="app.bank.BankController">
+        <property name="metier" ref="bankMetier"/>
+    </bean>
+
+    <bean id="paymentDialogController" class="app.orderline.PaymentController">
+        <property name="orderlineMetier" ref="orderlineMetier"/>
+    </bean>
+
+</beans>

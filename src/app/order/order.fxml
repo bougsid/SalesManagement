@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.order.OrderController">
+    <children>
+        <VBox prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+                <SplitPane dividerPositions="0.6092184368737475" prefHeight="600.0" prefWidth="1000.0" VBox.vgrow="ALWAYS">
+                    <items>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                            <children>
+                                <TableView fx:id="orderTable" prefHeight="200.0" prefWidth="652.0" tableMenuButtonVisible="true" VBox.vgrow="ALWAYS">
+                                    <columnResizePolicy>
+                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                    </columnResizePolicy>
+                                    <columns>
+                                        <TableColumn fx:id="customerColumn" prefWidth="75.0" text="%order.field.text.customer" />
+                                        <TableColumn fx:id="creationDateColumn" prefWidth="75.0" text="%order.field.text.creationDate" />
+                                        <TableColumn fx:id="shippingDateColumn" prefWidth="75.0" text="%order.field.text.shippingDate" />
+                                        <TableColumn fx:id="totalAmountColumn" prefWidth="75.0" text="%order.field.text.totalAmount" />
+                                        <TableColumn fx:id="paidAmountColumn" prefWidth="75.0" text="%order.field.text.paidAmount" />
+                                        <TableColumn fx:id="stateColumn" prefWidth="75.0" text="%order.field.text.state" />
+                                    </columns>
+                                </TableView>
+                                <GridPane>
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="466.0" minWidth="10.0" prefWidth="466.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="298.0" minWidth="10.0" prefWidth="139.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <HBox alignment="CENTER_RIGHT" prefHeight="30.0" prefWidth="214.0" spacing="5.0" GridPane.columnIndex="1">
+                                            <children>
+                                                <Button fx:id="moinsBtn" mnemonicParsing="false" onAction="#delete" text="%button.text.moins" GridPane.halignment="RIGHT" HBox.hgrow="NEVER" />
+                                                <Button fx:id="plusBtn" mnemonicParsing="false" onAction="#reset" text="%button.text.plus" GridPane.columnIndex="1" GridPane.halignment="RIGHT" HBox.hgrow="NEVER" />
+                                            </children>
+                                            <GridPane.margin>
+                                                <Insets right="15.0" />
+                                            </GridPane.margin>
+                                        </HBox>
+                              <HBox alignment="CENTER_LEFT" fillHeight="false" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.halignment="CENTER" GridPane.hgrow="NEVER" GridPane.valignment="CENTER" GridPane.vgrow="NEVER">
+                                 <children>
+                                              <Label text="%order.field.text.customer">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                    <ComboBox fx:id="customer" prefWidth="150.0" promptText="%order.field.text.customer">
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </ComboBox>
+                                              <Button fx:id="add" mnemonicParsing="false" onAction="#add" text="%button.text.add" />
+                                 </children>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </HBox>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </VBox>
+                        <StackPane>
+                            <children>
+                                <GridPane>
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints fillHeight="false" maxHeight="64.0" minHeight="31.0" prefHeight="43.0" vgrow="NEVER" />
+                                        <RowConstraints fillHeight="false" maxHeight="49.0" minHeight="16.0" prefHeight="37.0" vgrow="NEVER" />
+                                        <RowConstraints fillHeight="false" minHeight="40.0" prefHeight="30.0" vgrow="NEVER" />
+                              <RowConstraints fillHeight="false" minHeight="40.0" prefHeight="30.0" vgrow="NEVER" />
+                                        <RowConstraints fillHeight="false" maxHeight="459.0" minHeight="214.0" prefHeight="214.0" vgrow="SOMETIMES" />
+                              <RowConstraints fillHeight="false" maxHeight="459.0" minHeight="35.0" prefHeight="36.0" vgrow="SOMETIMES" />
+                              <RowConstraints fillHeight="false" maxHeight="459.0" minHeight="95.0" prefHeight="232.0" vgrow="SOMETIMES" />
+                                    </rowConstraints>
+                                    <children>
+                                        <Button mnemonicParsing="false" onAction="#update" text="%button.text.update" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                            <GridPane.margin>
+                                                <Insets right="10.0" />
+                                            </GridPane.margin>
+                                        </Button>
+                                        <Label text="%order.field.text.note" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
+                                        <TextField fx:id="note" promptText="%order.field.text.note" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                            <GridPane.margin>
+                                                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                            </GridPane.margin>
+                                        </TextField>
+                                        <Label text="%order.field.text.bill" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                                        <Label fx:id="bill" text="F4LDK77" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin></Label>
+                                        <Button mnemonicParsing="false" text="%order.button.text.showFacture" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin></Button>
+                              <Button fx:id="moinsBtn1" mnemonicParsing="false" onAction="#deleteCheck" prefHeight="25.0" prefWidth="26.0" text="%button.text.moins" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets right="40.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <Button fx:id="plusBtn1" mnemonicParsing="false" onAction="#resetCheck" prefHeight="25.0" prefWidth="26.0" text="%button.text.plus" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <TableView fx:id="checkTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                                <columns>
+                                  <TableColumn fx:id="numColumn" prefWidth="75.0" text="%check.text.num" visible="false" />
+                                  <TableColumn fx:id="nameColumn" prefWidth="75.0" text="%check.text.name" />
+                                    <TableColumn fx:id="amountColumn" prefWidth="75.0" text="%check.text.amount" />
+                                    <TableColumn fx:id="bankColumn" prefWidth="75.0" text="%check.text.bank" visible="false" />
+                                    <TableColumn fx:id="checkStateColumn" prefWidth="75.0" text="%check.text.state" />
+                                    <TableColumn fx:id="typeColumn" prefWidth="75.0" text="%check.text.type" />
+                                    <TableColumn fx:id="dueDateColumn" prefWidth="75.0" text="%check.text.dueDate" />
+                                </columns>
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TableView>
+                              <Button fx:id="validateButton" mnemonicParsing="false" onAction="#validateCheck" text="%check.button.validateCheck" GridPane.rowIndex="5">
+                                 <GridPane.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                 </GridPane.margin>
+                              </Button>
+                              <TitledPane fx:id="checkPane" expanded="false" text="%check.text.information" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.valignment="TOP">
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                                 <content>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label text="%check.text.name" />
+                                          <Label text="%check.text.amount" GridPane.rowIndex="1" />
+                                          <Label text="%check.text.bank" GridPane.rowIndex="2" />
+                                          <Label text="%check.text.dueDate" GridPane.rowIndex="3" />
+                                          <TextField fx:id="checkName" promptText="%check.text.name" GridPane.columnIndex="1" />
+                                          <TextField fx:id="checkAmount" promptText="%check.text.amount" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <ComboBox fx:id="checkBank" prefWidth="150.0" promptText="%check.text.bank" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <DatePicker fx:id="checkDueDate" promptText="%check.text.dueDate" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Button mnemonicParsing="false" onAction="#updateCheck" text="%button.text.update" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                          <Button mnemonicParsing="false" onAction="#addCheck" text="%button.text.add" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" />
+                                       </children>
+                                    </GridPane>
+                                 </content>
+                              </TitledPane>
+                              <Label text="%order.text.cash" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+                              <TextField fx:id="cash" editable="false" onKeyPressed="#validateCash" promptText="%order.text.cash" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <GridPane.margin>
+                                    <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                                    </children>
+                                </GridPane>
+                            </children>
+                        </StackPane>
+                    </items>
+                </SplitPane>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

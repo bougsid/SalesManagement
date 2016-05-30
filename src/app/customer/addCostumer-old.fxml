@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.customer.AddCustomerController">
+   <children>
+      <VBox prefHeight="600.0" prefWidth="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <GridPane hgap="10.0" vgap="10.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints fillHeight="false" minHeight="25.0" prefHeight="0.0" />
+                  <RowConstraints fillHeight="false" minHeight="25.0" prefHeight="0.0" />
+                <RowConstraints fillHeight="false" minHeight="25.0" prefHeight="0.0" />
+                <RowConstraints fillHeight="false" minHeight="25.0" prefHeight="0.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" minHeight="25.0" prefHeight="0.0" vgrow="NEVER" />
+                  <RowConstraints minHeight="40.0" vgrow="NEVER" />
+                  <RowConstraints fillHeight="false" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <TextField fx:id="code" onKeyPressed="#search" promptText="%customer.field.text.code" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <ComboBox fx:id="type" promptText="%customer.field.text.clientType" GridPane.columnIndex="3">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </ComboBox>
+                  <GridPane GridPane.columnIndex="1" GridPane.rowIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <TextField fx:id="lastName" promptText="%customer.field.text.lastName">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                        <TextField fx:id="firstName" minWidth="-Infinity" prefWidth="99.0" promptText="%customer.field.text.firstName" GridPane.columnIndex="1">
+                           <GridPane.margin>
+                              <Insets left="10.0" />
+                           </GridPane.margin>
+                        </TextField>
+                     </children>
+                  </GridPane>
+                  <Label text="%customer.field.text.code" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                  <Label text="%customer.field.text.email" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                  <TextField fx:id="adresse" promptText="%customer.field.text.adresse" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <ComboBox fx:id="region" promptText="%customer.field.text.region" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </ComboBox>
+                  <ComboBox fx:id="city" promptText="%customer.field.text.city" GridPane.columnIndex="3" GridPane.rowIndex="2">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </ComboBox>
+                  <TextField fx:id="email" promptText="%customer.field.text.email" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label text="%customer.field.text.phone" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
+                  <Label text="%customer.field.text.lastName" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <Label text="%customer.field.text.adresse" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                  <TextField fx:id="phone" promptText="%customer.field.text.phone" GridPane.columnIndex="3" GridPane.rowIndex="3">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label text="%customer.field.text.loyal" GridPane.halignment="LEFT" GridPane.rowIndex="4" GridPane.valignment="CENTER" />
+                  <ComboBox fx:id="loyal" promptText="%customer.field.text.loyal" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </ComboBox>
+                  <DatePicker fx:id="registrationDate" promptText="%customer.field.text.registrationDate" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                     <GridPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </GridPane.margin>
+                  </DatePicker>
+                  <Label text="%customer.field.text.clientType" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                  <Label text="%customer.field.text.city" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Label text="%customer.field.text.region" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                  <Button fx:id="add" mnemonicParsing="false" onAction="#add" text="%button.text.add" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets left="10.0" />
+                     </GridPane.margin>
+                  </Button>
+                  <Button fx:id="updateButton" visible="false" mnemonicParsing="false" onAction="#update" text="%button.text.update" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="6" GridPane.valignment="CENTER">
+                     <GridPane.margin>
+                        <Insets right="10.0" />
+                     </GridPane.margin>
+                  </Button>
+                   <Button fx:id="plusBtn" mnemonicParsing="false" onAction="#reset" text="%button.text.plus" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.rowIndex="6" HBox.hgrow="NEVER" />
+
+                   <TitledPane fx:id="moreInfoPane" expanded="false" text="%customer.titledPane.text.moreInfo" GridPane.columnSpan="4" GridPane.rowIndex="5">
+                     <content>
+                        <GridPane hgap="10.0" vgap="10.0">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="30.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="15.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="15.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="15.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="15.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <children>
+                              <ComboBox fx:id="gender" promptText="%customer.field.text.gender" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" />
+                                 </GridPane.margin>
+                              </ComboBox>
+                              <Label text="%customer.field.text.gender" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                              <DatePicker fx:id="birthdayDate" promptText="%customer.field.text.birthday" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" />
+                                 </GridPane.margin>
+                              </DatePicker>
+                              <Label text="%customer.field.text.birthday" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.valignment="CENTER" />
+                              <TextField fx:id="zip" promptText="%customer.field.text.zip" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Label text="%customer.field.text.zip" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                              <TextField fx:id="fax" promptText="%customer.field.text.fax" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Label text="%customer.field.text.fax" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+                              <TextField fx:id="note" promptText="%customer.field.text.note" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" />
+                                 </GridPane.margin>
+                              </TextField>
+                              <Label text="%customer.field.text.note" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                              <ComboBox fx:id="state" promptText="%customer.field.text.state" GridPane.columnIndex="3" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                 <GridPane.margin>
+                                    <Insets left="15.0" />
+                                 </GridPane.margin>
+                              </ComboBox>
+                              <Label text="%customer.field.text.state" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
+                           </children>
+                        </GridPane>
+                     </content>
+                  </TitledPane>
+                  <Label text="%customer.field.text.registrationDate" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                  <Button fx:id="newOrderButton" mnemonicParsing="false" onAction="#newOrder" text="%customer.button.newOrder" visible="false" GridPane.rowIndex="6" />
+                  <Button fx:id="showOrdersButton" mnemonicParsing="false" onAction="#showOrders" text="%customer.button.showOrders" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </GridPane>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </children>
+</AnchorPane>

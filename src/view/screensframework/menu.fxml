@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="60.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.screensframework.MenuController">
+   <children>
+      <HBox alignment="CENTER" layoutX="61.0" layoutY="184.0" spacing="30.0">
+         <children>
+            <Button fx:id="order" alignment="CENTER" contentDisplay="TOP" layoutX="61.0" layoutY="184.0" mnemonicParsing="false" onAction="#order" text="Ventes">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/ventes.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="consultCustomer" alignment="CENTER" contentDisplay="TOP" layoutX="127.0" layoutY="184.0" mnemonicParsing="false" onAction="#customer" text="Clients">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/client.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="item" alignment="CENTER" contentDisplay="TOP" layoutX="187.0" layoutY="184.0" mnemonicParsing="false" onAction="#item" text="Produits">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/items.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button alignment="CENTER" contentDisplay="TOP" layoutX="258.0" layoutY="184.0" mnemonicParsing="false" onAction="#supplier" text="Fournisseurs">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/suppliers.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="addCostumer" layoutX="347.0" layoutY="184.0" mnemonicParsing="false" onAction="#addCustomer" text="Ajouter Client" />
+            <Button alignment="CENTER" contentDisplay="TOP" layoutX="446.0" layoutY="184.0" mnemonicParsing="false" onAction="#addItem" text="Ajouter Produit">
+               <graphic>
+                  <ImageView fitHeight="60.0" fitWidth="60.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../resources/images/add_item.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+         <padding>
+            <Insets bottom="20.0" top="20.0" />
+         </padding>
+      </HBox>
+      <fx:include fx:id="menuToolbar" source="../../app/customer/addCostumer.fxml" />
+   </children>
+   <padding>
+      <Insets top="30.0" />
+   </padding>
+</VBox>

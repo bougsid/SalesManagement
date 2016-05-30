@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="392.0" prefWidth="616.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.screensframework.MenuController">
+   <children>
+      <Button fx:id="order" layoutX="61.0" layoutY="184.0" mnemonicParsing="false" onAction="#order" text="Ventes" />
+      <Button fx:id="consultCustomer" layoutX="127.0" layoutY="184.0" mnemonicParsing="false" onAction="#customer" text="Clients" />
+      <Button fx:id="addCostumer" layoutX="347.0" layoutY="184.0" mnemonicParsing="false" onAction="#addCustomer" text="Ajouter Client" />
+      <Button fx:id="item" layoutX="187.0" layoutY="184.0" mnemonicParsing="false" onAction="#item" text="Produits" />
+      <Button layoutX="446.0" layoutY="184.0" mnemonicParsing="false" onAction="#addItem" text="Ajouter Produit" />
+      <Button layoutX="258.0" layoutY="184.0" mnemonicParsing="false" onAction="#supplier" text="Fournisseurs" />
+   </children>
+</AnchorPane>

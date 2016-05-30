@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.order.OrderController">
+   <children>
+      <Button fx:id="add" layoutX="446.0" layoutY="315.0" mnemonicParsing="false" text="%button.text.add" />
+      <ComboBox fx:id="customer" layoutX="425.0" layoutY="260.0" prefWidth="150.0" />
+      <ComboBox fx:id="user" layoutX="425.0" layoutY="213.0" prefWidth="150.0" promptText="User" />
+   </children>
+</AnchorPane>
